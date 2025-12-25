@@ -8,7 +8,6 @@ load_dotenv()
 os.environ["LLAMA_CLOUD_API_KEY"] = os.getenv("LLAMA_CLOUD_API_KEY")
 os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
 
-# Rest of your code stays the same
 from llama_parse import LlamaParse
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, StorageContext, Settings
 from llama_index.vector_stores.chroma import ChromaVectorStore
@@ -74,4 +73,5 @@ def get_query_engine():
     # Retrieve top 10 chunks - found this works better for financial docs
     # than the default 3. Tables are often spread across pages.
     # TODO: Make this configurable? Might need different values for different doc types
+
     return index.as_query_engine(similarity_top_k=10)
